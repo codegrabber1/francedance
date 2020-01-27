@@ -24,13 +24,15 @@
 			<span class="sep"> | </span>
 				<?php
 				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'francedance' ), 'francedance', '<a href="http://makecodework.com">Олег Порученко</a>' );
+				printf( esc_html__( 'Theme: %1$s by %2$s.', 'francedance' ), 'francedance', '<a href="http://makecodework.com">makecodework.com</a>' );
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+<script>
+    new WOW().init();
+</script>
 </body>
 </html>

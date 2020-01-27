@@ -9,3 +9,26 @@
 		margin-right: 0;
 	}
 }
+.wrrap{
+
+  height: 100vh;
+  width: 100%;
+  perspective: 8px;
+  perspective-origin: 50%;
+}
+#mainpage{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  background-size: contain !important;
+  background: no-repeat fixed #000;
+
+}
+.scrollable-content{
+  background: white;
+  overflow: scroll;
+  margin: 0 auto;
+  width: 500px;
+  height: 250px;
+}
