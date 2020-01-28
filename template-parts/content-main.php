@@ -6,23 +6,10 @@
  *
  * @package FranceDance
  */
-
+   get_header();
 ?>
 
-<article id="mainpage" <?php post_class(); ?>
-         style="background-image: url(<?php echo get_the_post_thumbnail_url() ?>)">
-    <div class="main_menu clearfix">
-        <?php if( !is_home()):?>
-        <nav id="site-navigation" class="main-navigation">
-            <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'francedance' ); ?></button>
-            <?php
-            wp_nav_menu( array(
-                'theme_location' => 'menu-1',
-                'menu_id'        => 'primary-menu',
-            ) );
-            ?>
-        </nav>
-        <?php endif; wp_reset_query();?>
-    </div>
-
-</article><!-- #post-<?php the_ID(); ?> -->
+<div class="section"><?php echo get_the_post_thumbnail() ?></div>
+<div class="section"><?php echo get_the_post_thumbnail() ?></div>
+<div class="section"><?php echo get_the_post_thumbnail() ?></div>
+<div class="section"><?php echo get_the_post_thumbnail() ?></div>

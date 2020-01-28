@@ -127,21 +127,28 @@ add_action( 'widgets_init', 'francedance_widgets_init' );
  */
 function francedance_scripts() {
 
-	wp_enqueue_style( 'mcw-animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' );
+	wp_enqueue_style( 'francedance-animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' );
 
-	//wp_enqueue_style( 'francedance-fullpagecss', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/fullpage.min.css' );
+	wp_enqueue_style( 'francedance-carouselcss', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' );
 
 	wp_enqueue_style( 'francedance-fontawesomecss', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
+
+	wp_enqueue_style( 'francedance-superfishcss', 'https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.9/css/superfish.min.css' );
+
+	wp_enqueue_style( 'francedance-mmenucss', 'https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.3/jquery.mmenu.all.css' );
+
 
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'francedance-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'mcw-wowjs', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array( 'jquery' ), '20151215', true );
+	wp_enqueue_script( 'francedance-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'francedance-fullpage', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js', array(), '20151215', true );
+	wp_enqueue_script( 'francedance-wowjs', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array( 'jquery' ), '20151215', true );
 
-	wp_enqueue_script( 'francedance-fullpageext', 'https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.extensions.min.js', array(), '20151215', true );
+	wp_enqueue_script( 'francedance-superfishjs', 'https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.9/js/superfish.min.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'francedance-mmenujs', 'https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.3/jquery.mmenu.all.js', array(), '20151215', true );
 
 
 	wp_enqueue_script( 'francedance-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
