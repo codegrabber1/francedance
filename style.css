@@ -418,7 +418,7 @@ html {
   box-sizing: inherit; }
 
 body {
-  background: #fff;
+  background: #000;
   /* Fallback for when there is no custom background color defined. */ }
 
 hr {
@@ -428,13 +428,11 @@ hr {
   margin-bottom: 1.5em; }
 
 ul, ol {
-  margin: 0 0 1.5em 3em; }
+  margin: 0;
+  padding: 0; }
 
-ul {
-  list-style: disc; }
-
-ol {
-  list-style: decimal; }
+ul, ol {
+  list-style: none; }
 
 li > ul,
 li > ol {
@@ -451,7 +449,8 @@ img {
   height: auto;
   /* Make sure images are scaled correctly. */
   max-width: 100%;
-  /* Adhere to container width. */ }
+  /* Adhere to container width. */
+  display: block; }
 
 figure {
   margin: 1em 0;
@@ -508,9 +507,12 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
   color: #666;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  padding: 3px; }
+  border: none;
+  border-bottom: 1px solid #21759b;
+  border-radius: .4rem;
+  padding: 10px;
+  margin: 8px 0;
+  background-color: #000; }
   input[type="text"]:focus,
   input[type="email"]:focus,
   input[type="url"]:focus,
@@ -534,6 +536,18 @@ select {
 
 textarea {
   width: 100%; }
+
+input[type="text"],
+input[type="email"] {
+  width: 100%; }
+
+input[type="submit"],
+button {
+  background-color: #ff490f;
+  padding: 10px;
+  color: #fffffb;
+  border: none;
+  text-transform: uppercase; }
 
 /*--------------------------------------------------------------
 # Navigation
@@ -568,7 +582,7 @@ a {
   align-items: center; }
 
 .sf-arrows .sf-with-ul::after {
-  border-top-color: #f60; }
+  border-top-color: #a02b27; }
 
 .sf-menu {
   margin: 0;
@@ -588,7 +602,7 @@ a {
 .sf-menu .sf-mega:after {
   content: '';
   position: absolute;
-  border-top: #f60;
+  border-top: #a02b27;
   left: 10%;
   margin-left: -12px;
   top: 0;
@@ -606,7 +620,7 @@ a {
   margin: 5px 0; }
 
 .sf-menu .sf-mega ul li a {
-  color: #fff;
+  color: #fffffb;
   font-weight: normal;
   margin: 0;
   padding: 0; }
@@ -618,7 +632,7 @@ a {
   margin-right: 10px; }
 
 .sf-menu .sf-mega ul li a:hover {
-  color: #f60;
+  color: #a02b27;
   margin-left: 5px; }
 
 .sf-menu li {
@@ -632,7 +646,7 @@ a {
 
 .sf-menu li > a {
   text-decoration: none;
-  color: #fff;
+  color: #fffffb;
   font-size: 24px;
   font-size: 1.5rem;
   border: none;
@@ -640,12 +654,18 @@ a {
   position: relative;
   margin: 0; }
 
+.sf-menu .inline ul li {
+  float: left !important; }
+
+.sf-menu .inline ul li > a {
+  color: #000 !important; }
+
 .sf-menu li > a:hover {
   text-decoration: none;
   cursor: pointer; }
 
 .sf-menu li > a.active {
-  border-top: 2px solid #f60;
+  border-top: 2px solid #a02b27;
   margin: 0; }
 
 .sf-menu li > li {
@@ -658,7 +678,7 @@ a {
 
 .sf-menu li > li > a {
   text-decoration: none;
-  color: #fff;
+  color: #fffffb;
   font-size: 14px;
   border: none;
   display: block;
@@ -670,7 +690,7 @@ a {
   cursor: pointer; }
 
 .sf-menu li > li > a.active {
-  border-top: 2px solid #f60;
+  border-top: 2px solid #a02b27;
   margin: 0; }
 
 .sf-menu li > li > ul {
@@ -688,7 +708,7 @@ a {
   position: relative; }
 
 .sf-menu li > li > ul > li a:hover {
-  color: #f60; }
+  color: #a02b27; }
 
 .mobile-mnu {
   cursor: pointer; }
@@ -719,7 +739,7 @@ a {
 .toggle-mnu span:before {
   width: 100%;
   height: 3px;
-  background-color: #f60;
+  background-color: #a02b27;
   transition: all 0.3s;
   backface-visibility: hidden;
   border-radius: 2px; }
@@ -848,6 +868,33 @@ a {
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
+.content-area {
+  float: left;
+  margin: 0 -25% 0 0;
+  width: 100%; }
+
+.site-header {
+  border: 1px solid red;
+  background: rgba(0, 0, 0, 0.5) no-repeat center;
+  background-size: cover;
+  width: 100%;
+  height: 130px;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  justify-content: center; }
+
+.site-content .widget-area {
+  float: right;
+  overflow: hidden;
+  width: 25%; }
+
+.site-footer {
+  clear: both;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center; }
+
 .no-sidebar .content-area {
   float: none;
   margin-left: auto;
@@ -858,7 +905,14 @@ a {
 
 .wrrap {
   width: 100%;
-  position: relative; }
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%; }
 
 #mainpage {
   z-index: 1;
@@ -873,7 +927,11 @@ a {
 ## Posts and pages
 --------------------------------------------------------------*/
 .sticky {
-  display: block; }
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; }
 
 .post,
 .page {
@@ -890,6 +948,32 @@ a {
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
+
+.contact-info {
+  color: #fffffb;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto 60px; }
+
+.contact-block {
+  background-color: #21211f;
+  padding: 50px 20px;
+  color: #fffffb;
+  text-align: center;
+  opacity: .8; }
+
+.contact-block ul li {
+  display: inline-block;
+  background-color: #000;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  padding: 2px; }
+
+.contact-block ul li > a {
+  color: #fffffb;
+  font-size: 27.2px;
+  font-size: 1.7rem; }
 
 /*--------------------------------------------------------------
 ## Comments

@@ -15,9 +15,14 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
 	color: $color__text-input;
-	border: 1px solid $color__border-input;
-	border-radius: 3px;
-	padding: 3px;
+	//border: 1px solid $color__border-input;
+	border: none;
+	border-bottom: 1px solid#21759b;
+	border-radius: .4rem;
+    padding: 10px;
+    margin: 8px 0;
+    background-color: $color__background-body;
+
 
 	&:focus {
 		color: $color__text-input-focus;
@@ -30,4 +35,16 @@ select {
 
 textarea {
 	width: 100%;
+}
+input[type="text"],
+input[type="email"]{
+  width: 100%;
+}
+input[type="submit"],
+button {
+  background-color: $color__button;
+  padding: 10px;
+  color: $color__inverted-link;
+  border: none;
+  text-transform: uppercase;
 }

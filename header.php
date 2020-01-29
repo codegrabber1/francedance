@@ -23,19 +23,21 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'francedance' ); ?></a>
-
+	<?php if ( is_home() && is_front_page() ) : ?>
 	<header id="masthead" class="site-header">
-		<?php if ( is_home() ) : ?>
+
 		<nav id="site-navigation" class="main-navigation">
 			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'francedance' ); ?></button>
 			<?php
 			wp_nav_menu( array(
 				'theme_location' => 'menu-1',
 				'menu_id'        => 'primary-menu',
+				'menu_class'     => 'inline-menu',
+				'container'      => 'ul',
 			) );
 			?>
 		</nav>
-		<?php endif; wp_reset_query(); ?>
-	</header>
 
+	</header>
+	<?php endif; wp_reset_query(); ?>
 	<div id="content" class="site-content">

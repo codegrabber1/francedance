@@ -1,4 +1,4 @@
-$color__background-body: #fff;
+$color__background-body: #000;
 $color__background-screen: #f1f1f1;
 $color__background-hr: #ccc;
 $color__background-button: #e6e6e6;
@@ -6,7 +6,8 @@ $color__background-pre: #eee;
 $color__background-ins: #fff9c0;
 $color__background-nav: #2247ff;
 $color__background-transparent: none;
-$color__background-opacity: rgba(0, 0, 0, 0.5);;
+$color__background-opacity: rgba(0, 0, 0, 0.5);
+$color__background-blocks: #21211f;
 
 $color__text-screen: #21759b;
 $color__text-input: #666;
@@ -14,14 +15,15 @@ $color__text-input-focus: #111;
 $color__link: royalblue;
 $color__link-visited: purple;
 $color__link-hover: midnightblue;
-$color__active-link: #f60;
+$color__active-link: #a02b27;
 $color__text-main: #404040;
-$color__inverted-link: #fff;
+$color__inverted-link: #fffffb;
 
 $color__border-button: #ccc #ccc #bbb;
 $color__border-button-hover: #ccc #bbb #aaa;
 $color__border-button-focus: #aaa #bbb #bbb;
 $color__border-input: #ccc;
 $color__border-abbr: #666;
+$color__button: #ff490f;
 
 $color__header-logo: #fff;

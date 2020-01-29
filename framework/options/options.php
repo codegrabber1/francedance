@@ -143,6 +143,17 @@ function mcw_theme_options_page(){
                                 </div>
                             </div>
                         </div>  <!-- #general -->
+                        <div id="contact" class="tab_block">
+                            <h2><?php _e( 'Contact settings', 'francedance' );?></h2>
+                            <div class="fields_wrap">
+                                <div class="field infobox">
+                                    <p><strong><?php _e( 'reCAPTCHA', 'francedance' );?></strong></p>
+		                            <?php _e( 'reCAPTCHA helps to avoid spam by email. Using CAPTCHA confirms that sending a message is done by a person.', 'francedance' );?>
+                                </div>
+                                <h3><?php _e( 'Contact Card', 'francedance' );?></h3>
+                                
+                            </div>
+                        </div>  <!-- #contact -->
                         <div id="reset" class="tab_block">
                             <h2><?php _e( 'Reset', 'francedance' ); ?></h2>
                             <div class="fields_wrap">
@@ -155,7 +166,7 @@ function mcw_theme_options_page(){
                                     <input type="submit" name="mcw_option[reset]" class="button-primary" value="<?php _e( 'Reset the initial settings', 'francedance' );?>">
                                 </div>
                             </div>
-                        </div>
+                        </div> <!-- #reset -->
                     </div>
 
             </div>  <!-- .options_form-->

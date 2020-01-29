@@ -51,6 +51,7 @@ if ( ! function_exists( 'francedance_setup' ) ) :
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'francedance' ),
+			'menu-2' => esc_html__( 'Second', 'francedance' ),
 		) );
 
 		/*
@@ -127,6 +128,8 @@ add_action( 'widgets_init', 'francedance_widgets_init' );
  */
 function francedance_scripts() {
 
+	wp_enqueue_style( 'francedance-bootstrapcss', 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css' );
+
 	wp_enqueue_style( 'francedance-animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' );
 
 	wp_enqueue_style( 'francedance-carouselcss', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css' );
@@ -149,6 +152,8 @@ function francedance_scripts() {
 	wp_enqueue_script( 'francedance-superfishjs', 'https://cdnjs.cloudflare.com/ajax/libs/superfish/1.7.9/js/superfish.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'francedance-mmenujs', 'https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.3/jquery.mmenu.all.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'francedance-mmenujs', 'https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js', array(), '20151215', true );
 
 
 	wp_enqueue_script( 'francedance-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );

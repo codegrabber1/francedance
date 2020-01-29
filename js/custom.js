@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
     $(".owl-carousel").owlCarousel({
         items: 1,
         loop: true,
-        autoplay: false,
+        autoplay: true,
         margin: 0,
         center: true,
         dots: false
@@ -42,3 +42,14 @@ jQuery(document).ready(function($){
     }); // end top menu.
 
 });// end of ready.
+
+$(window).scroll(function(){
+    if ($(window).scrollTop() >= 10) {
+        $('.site-header').addClass('sticky');
+
+    }
+    else {
+        $('.site-header').removeClass('sticky');
+        
+    }
+});
