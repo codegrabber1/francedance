@@ -1,4 +1,27 @@
 jQuery(document).ready(function($){
+    // $(window).scroll(function(){
+    //     if ($(window).scrollTop() >= 200) {
+    //         $('.site-header').addClass('sticky');
+    //
+    //     }
+    //     else {
+    //         $('.site-header').removeClass('sticky');
+    //
+    //     }
+    // });
+    // init Masonry
+    let $grid = $(".grid");
+    $grid.masonry({
+        itemSelector: '.grid-item',
+        percentPosition: true,
+        columnWidth: '.grid-sizer',
+        resize: true
+    });
+    // layout Masonry after each image loads
+    $grid.imagesLoaded().progress( function() {
+        $grid.masonry();
+    });
+    
     $(".owl-carousel").owlCarousel({
         items: 1,
         loop: true,
@@ -20,7 +43,7 @@ jQuery(document).ready(function($){
             title: "Battle BAD"
         }
     });
-    var api = $("#my-menu").data("mmenu");
+    let api = $("#my-menu").data("mmenu");
     api.bind("closed", function() {
         $(".toggle-mnu").removeClass("on");
     });
@@ -41,15 +64,7 @@ jQuery(document).ready(function($){
         return false;
     }); // end top menu.
 
+
 });// end of ready.
 
-$(window).scroll(function(){
-    if ($(window).scrollTop() >= 10) {
-        $('.site-header').addClass('sticky');
 
-    }
-    else {
-        $('.site-header').removeClass('sticky');
-        
-    }
-});

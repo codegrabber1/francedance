@@ -577,9 +577,14 @@ a {
   top: 0;
   right: 0;
   height: 100%;
-  width: 20%;
+  width: 25%;
   display: flex;
   align-items: center; }
+
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  color: #fffffb; }
 
 .sf-arrows .sf-with-ul::after {
   border-top-color: #a02b27; }
@@ -632,7 +637,7 @@ a {
   margin-right: 10px; }
 
 .sf-menu .sf-mega ul li a:hover {
-  color: #a02b27;
+  color: #fffffb;
   margin-left: 5px; }
 
 .sf-menu li {
@@ -646,23 +651,20 @@ a {
 
 .sf-menu li > a {
   text-decoration: none;
-  color: #fffffb;
-  font-size: 24px;
-  font-size: 1.5rem;
+  color: #a02b27;
+  font-size: 30.4px;
+  font-size: 1.9rem;
   border: none;
   display: block;
   position: relative;
-  margin: 0; }
-
-.sf-menu .inline ul li {
-  float: left !important; }
-
-.sf-menu .inline ul li > a {
-  color: #000 !important; }
+  margin: 0;
+  font-weight: bold;
+  text-transform: uppercase; }
 
 .sf-menu li > a:hover {
   text-decoration: none;
-  cursor: pointer; }
+  cursor: pointer;
+  color: #fffffb; }
 
 .sf-menu li > a.active {
   border-top: 2px solid #a02b27;
@@ -709,6 +711,17 @@ a {
 
 .sf-menu li > li > ul > li a:hover {
   color: #a02b27; }
+
+.inline-menu li {
+  display: inline-block;
+  margin: 0 10px; }
+
+.inline-menu li a {
+  color: #fffffb;
+  font-weight: bold;
+  font-size: 32px;
+  font-size: 2rem;
+  text-decoration: none; }
 
 .mobile-mnu {
   cursor: pointer; }
@@ -877,12 +890,18 @@ a {
   border: 1px solid red;
   background: rgba(0, 0, 0, 0.5) no-repeat center;
   background-size: cover;
-  width: 100%;
+  width: 90%;
+  margin: 0 auto 20px;
   height: 130px;
-  position: absolute;
   z-index: 2;
   display: flex;
-  justify-content: center; }
+  align-items: flex-end;
+  justify-content: space-around; }
+
+.main-navigation {
+  width: auto;
+  border: 1px solid red;
+  align-items: center; }
 
 .site-content .widget-area {
   float: right;
@@ -895,14 +914,6 @@ a {
   margin: 0 auto;
   text-align: center; }
 
-.no-sidebar .content-area {
-  float: none;
-  margin-left: auto;
-  margin-right: auto; }
-
-.no-sidebar .site-main {
-  margin-right: 0; }
-
 .wrrap {
   width: 100%;
   position: relative;
@@ -911,7 +922,7 @@ a {
   justify-content: center;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: 50% 50%; }
 
 #mainpage {
@@ -920,8 +931,9 @@ a {
   width: 100%; }
 
 .section img {
-  object-fit: contain !important;
-  height: 100vh; }
+  object-fit: cover;
+  height: 100vh;
+  opacity: .4; }
 
 /*--------------------------------------------------------------
 ## Posts and pages
@@ -932,6 +944,14 @@ a {
   top: 0;
   left: 0;
   width: 100%; }
+
+.top-header {
+  height: 200px;
+  width: 100%;
+  border: 1px solid red;
+  content: "";
+  display: table;
+  table-layout: fixed; }
 
 .post,
 .page {
@@ -949,11 +969,19 @@ a {
   clear: both;
   margin: 0 0 1.5em; }
 
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
 .contact-info {
   color: #fffffb;
   text-align: center;
   width: 80%;
   margin: 0 auto 60px; }
+
+.contact-info h2:after {
+  background-color: #FFFFFF;
+  height: 1px;
+  width: 30px; }
 
 .contact-block {
   background-color: #21211f;
@@ -1037,30 +1065,16 @@ object {
 /*--------------------------------------------------------------
 ## Galleries
 --------------------------------------------------------------*/
-.gallery {
-  margin-bottom: 1.5em; }
-
-.gallery-item {
-  display: inline-block;
-  text-align: center;
-  vertical-align: top;
+.grid {
+  display: flex;
+  flex-flow: wrap;
   width: 100%; }
-  .gallery-columns-2 .gallery-item {
-    max-width: 50%; }
-  .gallery-columns-3 .gallery-item {
-    max-width: 33.33%; }
-  .gallery-columns-4 .gallery-item {
-    max-width: 25%; }
-  .gallery-columns-5 .gallery-item {
-    max-width: 20%; }
-  .gallery-columns-6 .gallery-item {
-    max-width: 16.66%; }
-  .gallery-columns-7 .gallery-item {
-    max-width: 14.28%; }
-  .gallery-columns-8 .gallery-item {
-    max-width: 12.5%; }
-  .gallery-columns-9 .gallery-item {
-    max-width: 11.11%; }
 
-.gallery-caption {
-  display: block; }
+.grid-sizer,
+.grid-item {
+  width: 33.333%;
+  padding: 1px; }
+
+.grid-item {
+  float: left;
+  flex: auto; }

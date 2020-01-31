@@ -10,7 +10,7 @@
  */
 
 ?>
-
+        </div> <!-- .wrapper-->
 	</div><!-- #content -->
  
 </div><!-- #page -->

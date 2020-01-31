@@ -20,7 +20,7 @@ if ( ! function_exists( 'francedance_setup' ) ) :
 		 * Load up our required theme files and widgets.
 		 *
 		 */
-		require( get_template_directory() . "/framework/options/options.php" );
+		require( get_template_directory() . "/framework/options/site_options.php" );
 		require( get_template_directory() . "/framework/options/option_functions.php" );
 		/*
 		 * Make theme available for translation.
@@ -145,6 +145,11 @@ function francedance_scripts() {
 
 	wp_enqueue_script( 'francedance-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), '20151215', true );
 
+
+	wp_enqueue_script( 'francedance-imagesloaded', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'francedance-masonry', 'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js', array(), '20151215', true );
+
 	wp_enqueue_script( 'francedance-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'francedance-wowjs', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array( 'jquery' ), '20151215', true );
@@ -153,12 +158,7 @@ function francedance_scripts() {
 
 	wp_enqueue_script( 'francedance-mmenujs', 'https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.3/jquery.mmenu.all.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'francedance-mmenujs', 'https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js', array(), '20151215', true );
 
-
-	wp_enqueue_script( 'francedance-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
-
-	wp_enqueue_script( 'francedance-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'francedance-customjs', get_template_directory_uri() . '/js/custom.js', array(), '20151215', true );
 
@@ -169,3 +169,54 @@ function francedance_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'francedance_scripts' );
+
+/**
+ * Main big slider on the home page.
+ *
+ * @uses $wp_post_types Inserts new post type object into the list
+ *
+ * @return void the registered post type object, or an error object
+ */
+function main_slider() {
+	$labels = array(
+		'name'               => __( 'All slides', 'francedance' ),
+		'singular_name'      => __( 'Singular Name', 'francedance' ),
+		'add_new'            => __( 'Add New Singular Name', 'francedance' ),
+		'add_new_item'       => __( 'Add New Singular Name', 'francedance' ),
+		'edit_item'          => __( 'Edit Singular Name', 'francedance' ),
+		'new_item'           => __( 'New Singular Name', 'francedance' ),
+		'view_item'          => __( 'View Singular Name', 'francedance' ),
+		'parent_item_colon'  => __( 'Parent Singular Name:', 'francedance' ),
+		'menu_name'          => __( 'Big slider', 'francedance' ),
+	);
+
+	$args = array (
+		'labels'              => $labels,
+		'hierarchical'        => false,
+		'description'         => 'description',
+		'taxonomies'          => array(),
+		'public'              => true,
+		'show_ui'             => true,
+		'show_in_menu'        => true,
+		'show_in_admin_bar'   => true,
+		'menu_position'       => 10,
+		'menu_icon'           => '',
+		'show_in_nav_menus'   => true,
+		'publicly_queryable'  => true,
+		'exclude_from_search' => false,
+		'has_archive'         => true,
+		'query_var'           => true,
+		'can_export'          => true,
+		'rewrite'             => true,
+		'capability_type'     => 'post',
+		'supports'            => array(
+			'title',
+			'editor',
+			'thumbnail',
+			'excerpt',
+			'custom-fields',
+		),
+	);
+	register_post_type( 'mainslider', $args );
+}
+add_action( 'init', 'main_slider' );

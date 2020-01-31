@@ -6,11 +6,15 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: 20%;
+  width: 25%;
   display: flex;
   align-items: center;
 }
-
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  color: $color__inverted-link;
+}
 .sf-arrows .sf-with-ul::after {
   border-top-color: $color__active-link
 }
@@ -63,7 +67,7 @@
   margin-right: 10px;
 }
 .sf-menu .sf-mega ul li a:hover {
-  color: $color__active-link;
+  color: $color__inverted-link;
   margin-left: 5px
 }
 .sf-menu li {
@@ -77,24 +81,20 @@
 }
 .sf-menu li > a {
   text-decoration: none;
-  color: $color__inverted-link;
-  @include font-size(1.5);
+  color: $color__active-link;
+  @include font-size(1.9);
   border: none;
   display: block;
   position: relative;
   margin: 0;
+  font-weight: bold;
+  text-transform: uppercase;
 }
-.sf-menu .inline ul li{
-  float: left !important;
 
-}
-.sf-menu .inline ul li > a{
-  color: #000 !important;
-
-}
 .sf-menu li > a:hover {
   text-decoration: $color__background-transparent;
   cursor: pointer;
+  color: $color__inverted-link;
 }
 .sf-menu li > a.active {
   border-top: 2px solid $color__active-link;
@@ -143,6 +143,20 @@
 }
 .sf-menu li > li > ul > li a:hover {
   color: $color__active-link
+}
+.inline-menu {
+
+}
+.inline-menu li {
+  display: inline-block;
+  margin: 0 10px;
+}
+.inline-menu li a {
+  color: $color__inverted-link;
+  font-weight: bold;
+  @include font-size(2);
+  text-decoration: none;
+
 }
 .mobile-mnu {
   cursor: pointer;

@@ -1,14 +1,3 @@
-.no-sidebar {
-	.content-area {
-		float: none;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	.site-main {
-		margin-right: 0;
-	}
-}
 .wrrap{
   width: 100%;
   position: relative;
@@ -17,7 +6,7 @@
   justify-content: center;
   height: 100vh;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: 50% 50%;
 
 }
@@ -28,6 +17,7 @@
 
 }
 .section img {
-  object-fit: contain !important;
+  object-fit: cover;
   height: 100vh;
+  opacity: .4;
 }

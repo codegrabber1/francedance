@@ -6,7 +6,7 @@
  * http://codex.wordpress.org/Settings_API
  *
  * @package  codegramcwer
- * @file     options.php
+ * @file     site_options.php
  * @author   codegramcwer [Oleg Poruchenko]
  * @link    [makecodework@gmail.com]
  */
@@ -178,3 +178,47 @@ function mcw_theme_options_page(){
 	</div> <!-- #mcw_admin-->
 	<?php
 }
+
+/*
+ * ==================
+ * Return default array of options.
+ * ==================
+*/
+function mcw_default_options(){
+    $options = array(
+         'mcw_logo_url' => get_template_directory_uri().'/images/logo.png',
+         'mcw_fb_url'   => '',
+    );
+
+    return $options;
+}
+/*
+ * ==================
+ * Sanitize and validate options.
+ * ==================
+*/
+function mcw_validate_options( $input ){
+    $submit = ( ! empty( $input['submit'] ) ? true : false );
+    $reset = ( ! empty( $input['reset'] ) ? true : false );
+    if( $submit ) :
+        $input['mcw_logo_url']  = esc_url_raw( $input['mcw_logo_url'] );
+        $input['mcw_fb_url']    = esc_url_raw( $input['mcw_fb_url'] );
+    return $input;
+    elseif( $reset ) :
+        $input = mcw_default_options();
+        return $input;
+    endif;
+}
+
+if ( ! function_exists( 'mcw_get_option' ) ) :
+	/*
+	 * ==================
+	 * Used to output theme options is an elegant way.
+	 * @uses get_option() To retrieve the options array.
+	 * ==================
+	*/
+	function mcw_get_option( $option ) {
+		$options = get_option( 'mcw_options', mcw_default_options() );
+		return isset( $options[ $option ]) ?  $options[ $option ] : '';
+	}
+endif;

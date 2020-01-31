@@ -84,7 +84,9 @@ get_header();
                     <div class="row">
                         <div class="col-12">
                             <div class="contact-info">
-                                <h2>Contact</h2>
+                                <h2>
+                                    <span>Contact</span>
+                                </h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
                             </div>
 
@@ -98,7 +100,9 @@ get_header();
                                 <p>Retrouvez nous sur les réseaux sociaux</p>
                                 <ul>
                                     <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <?php if( mcw_get_option( 'mcw_fb_url' ) ): ?>
+                                    <li><a href="<?php echo mcw_get_option( 'mcw_fb_url' ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                    <?php endif; ?>
                                     <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
                                 </ul>

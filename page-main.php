@@ -15,18 +15,26 @@ get_header();
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
         <div class="wrrap">
+            <?php
+                $mainslider = new WP_Query( array ( 'post_type' => 'mainslider' ) );
+                if( $mainslider->have_posts() ):
+            ?>
             <div id="mainpage" class="owl-carousel">
                 <?php
-                    while ( have_posts() ) :
-                        the_post();
+                    while( $mainslider->have_posts() ) : $mainslider->the_post();
                         get_template_part( 'template-parts/content', 'main' );
-
-                    endwhile; // End of the loop.
+                    endwhile;
                 ?>
             </div>
+            <?php
+                endif; wp_reset_query();;
+            ?>
             <div class="main_menu clearfix">
                 <nav class="clearfix main-nav">
-                    <div class="py-3 enter-block">
+	                <div class="py-3 enter-block">
+                        <div class="logo">
+                            <p><?php bloginfo('name')?></p>
+                        </div>
                         <div class="mobile-mnu d-md-none d-lg-none clearfix">
                             <a class="toggle-mnu d-lg-none" href="#">
                                 <span></span>
@@ -49,10 +57,5 @@ get_header();
     </main><!-- #main -->
 </div><!-- #primary -->
 <?php
-
-
-  if( is_home() || is_front_page() ):
     get_footer('home');
-  else :
-    get_footer();
-  endif;        wp_reset_query();
+

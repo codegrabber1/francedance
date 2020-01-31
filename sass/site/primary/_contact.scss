@@ -1,0 +1,35 @@
+.contact-info{
+  color: $color__inverted-link;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto 60px;
+}
+.contact-info h2 {
+
+}
+
+.contact-info h2:after {
+  background-color: #FFFFFF;
+  height: 1px;
+  width: 30px;
+}
+.contact-block {
+  background-color: $color__background-blocks;
+  padding: 50px 20px;
+  color: $color__inverted-link;
+  text-align: center;
+  opacity: .8;
+
+}
+.contact-block ul li {
+  display: inline-block;
+  background-color: $color__background-body;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+}
+.contact-block ul li > a {
+  color: $color__inverted-link;
+  @include font-size(1.7);
+}

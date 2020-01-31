@@ -5,7 +5,12 @@
 	left: 0;
 	width: 100%;
 }
-
+.top-header{
+  height: 200px;
+  width: 100%;
+  border: 1px solid red;
+  @include clearfix();
+}
 .post,
 .page {
 	margin: 0;
@@ -25,31 +30,6 @@
 	clear: both;
 	margin: 0 0 1.5em;
 }
-.contact-info{
-  color: $color__inverted-link;
-  text-align: center;
-  width: 80%;
-  margin: 0 auto 60px;
-}
-.contact-block {
-  background-color: $color__background-blocks;
-  padding: 50px 20px;
-  color: $color__inverted-link;
-  text-align: center;
-  opacity: .8;
 
-}
-.contact-block ul li {
-  display: inline-block;
-  background-color: $color__background-body;
-  border-radius: 100%;
-  width: 40px;
-  height: 40px;
-  padding: 2px;
-}
-.contact-block ul li > a {
-  color: $color__inverted-link;
-  @include font-size(1.7);
-}
 
 

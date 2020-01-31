@@ -23,11 +23,17 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'francedance' ); ?></a>
-	<?php if ( is_home() && is_front_page() ) : ?>
-	<header id="masthead" class="site-header">
-
+	<?php if ( is_category() ) : ?>
+   	<header id="masthead" class="site-header">
+        <div class="logo">
+            <p><?php bloginfo('name')?></p>
+        </div>
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'francedance' ); ?></button>
+            <div class="mobile-mnu d-md-none d-lg-none clearfix">
+                <a class="toggle-mnu d-lg-none" href="#">
+                    <span></span>
+                </a>
+            </div>
 			<?php
 			wp_nav_menu( array(
 				'theme_location' => 'menu-1',
@@ -37,7 +43,7 @@
 			) );
 			?>
 		</nav>
-
 	</header>
 	<?php endif; wp_reset_query(); ?>
 	<div id="content" class="site-content">
+        <div class="wrapper">
