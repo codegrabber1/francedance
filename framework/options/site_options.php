@@ -64,6 +64,17 @@ function mcw_theme_options_scripts(){
 	wp_enqueue_script('mcw_upload', get_template_directory_uri() .'/framework/options/js/upload.js', array('jquery'));
 }
 /*
+* ==================
+* Register the theme options setting.
+* ==================
+*/
+
+function mcw_register_settings() {
+	register_setting( 'mcw_options', 'mcw_options', 'mcw_validate_options' );
+}
+add_action( 'admin_init', 'mcw_register_settings' );
+
+/*
  * ==================
  * Output the options page.
  * ==================
@@ -141,6 +152,16 @@ function mcw_theme_options_page(){
                                     <input type="text" id="mcw_options[mcw_inst_url]" name="mcw_options[mcw_inst_url]" value="<?php echo esc_attr( $options['mcw_inst_url'] );?>" />
                                     <span class="description long"><?php _e( "Enter full instagram-URL starting with <strong> https:// </strong>, or leave blank.", 'francedance' );?></span>
                                 </div>
+                                <div class="field">
+                                    <label for="mcw_options[mcw_youtube_url]"><?php _e( 'Youtube URL', 'francedance' );?></label>
+                                    <input id="mcw_options[mcw_youtube_url]" name="mcw_options[mcw_youtube_url]" type="text" value="<?php echo esc_attr($options['mcw_youtube_url']); ?>" />
+                                    <span class="description long"><?php _e( "Enter full youtube-URL starting with <strong> https:// </strong>, or leave blank.", 'francedance' ); ?></span>
+                                </div>
+                                <div class="field">
+                                    <label for="mcw_twitter_url"><?php _e( 'Twitter URL', 'francedance' );?></label>
+                                    <input id="mcw_options[mcw_twitter_url]" name="mcw_options[mcw_twitter_url]" type="text" value="<?php echo esc_attr ( $options['mcw_twitter_url']);?>">
+                                    <span class="description long"><?php _e( "Enter full twitter-URL starting with <strong> https:// </strong>, or leave blank.", 'francedance' ); ?></span>
+                                </div>
                             </div>
                         </div>  <!-- #general -->
                         <div id="contact" class="tab_block">
@@ -186,8 +207,11 @@ function mcw_theme_options_page(){
 */
 function mcw_default_options(){
     $options = array(
-         'mcw_logo_url' => get_template_directory_uri().'/images/logo.png',
-         'mcw_fb_url'   => '',
+         'mcw_logo_url'     => get_template_directory_uri().'/images/logo.png',
+         'mcw_fb_url'       => '',
+         'mcw_inst_url'       => '',
+         'mcw_youtube_url'  => '',
+         'mcw_twitter_url'  => '',
     );
 
     return $options;
@@ -201,8 +225,11 @@ function mcw_validate_options( $input ){
     $submit = ( ! empty( $input['submit'] ) ? true : false );
     $reset = ( ! empty( $input['reset'] ) ? true : false );
     if( $submit ) :
-        $input['mcw_logo_url']  = esc_url_raw( $input['mcw_logo_url'] );
-        $input['mcw_fb_url']    = esc_url_raw( $input['mcw_fb_url'] );
+        $input['mcw_logo_url']      = esc_url_raw( $input['mcw_logo_url'] );
+        $input['mcw_fb_url']        = esc_url_raw( $input['mcw_fb_url'] );
+        $input['mcw_inst_url']      = esc_url_raw( $input['mcw_inst_url'] );
+        $input['mcw_youtube_url']   = esc_url_raw( $input['mcw_youtube_url'] );
+        $input['mcw_twitter_url']   = esc_url_raw( $input['mcw_twitter_url'] );
     return $input;
     elseif( $reset ) :
         $input = mcw_default_options();

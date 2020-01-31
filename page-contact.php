@@ -99,12 +99,18 @@ get_header();
                                 <h2>Restez connectés</h2>
                                 <p>Retrouvez nous sur les réseaux sociaux</p>
                                 <ul>
+                                    <?php if( mcw_get_option( 'mcw_twitter_url' ) ): ?>
                                     <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    <?php endif; ?>
                                     <?php if( mcw_get_option( 'mcw_fb_url' ) ): ?>
                                     <li><a href="<?php echo mcw_get_option( 'mcw_fb_url' ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                     <?php endif; ?>
+                                    <?php if( mcw_get_option( 'mcw_inst_url' ) ):?>
                                     <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                    <?php endif;?>
+                                    <?php if( mcw_get_option( 'mcw_youtube_url' ) ): ?>
                                     <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                                    <?php endif;?>
                                 </ul>
                                 
                             </section>

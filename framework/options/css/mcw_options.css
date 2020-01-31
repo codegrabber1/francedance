@@ -155,7 +155,7 @@
 
 #mcw_admin .options_form input[type="text"],
 #mcw_admin .options_form textarea{
-    width: 235px;
+    width: 300px;
     background-color: #FFFFFF;
     border: 1px solid #E6E6E6;
     font-family: Arial, Verdana, sans-serif;
@@ -189,14 +189,14 @@
 }
 
 #mcw_admin .options_form .description {
-    font-size: 12px;
-    color: #777777;
+    /*font-size: 12px;*/
+    /*color: #777777;*/
     display: inline-block;
     font-style: normal;
     color: #999999;
     float: left;
     font-size: 11px;
-    width: 260px;
+    width: 360px;
     margin-top: 0;
     margin-left: 15px;
 }

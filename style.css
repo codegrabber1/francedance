@@ -354,7 +354,7 @@ select,
 optgroup,
 textarea {
   color: #404040;
-  font-family: sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
   line-height: 1.5; }
@@ -581,11 +581,6 @@ a {
   display: flex;
   align-items: center; }
 
-.logo {
-  margin: 0 auto;
-  text-align: center;
-  color: #fffffb; }
-
 .sf-arrows .sf-with-ul::after {
   border-top-color: #a02b27; }
 
@@ -645,6 +640,13 @@ a {
   white-space: normal;
   background: none;
   float: none; }
+
+.sf-menu li a:before {
+  content: '\2013';
+  color: #a02b27;
+  height: 3px;
+  margin: 0 5px;
+  width: 30%; }
 
 .sf-menu li:hover {
   background: none; }
@@ -716,11 +718,19 @@ a {
   display: inline-block;
   margin: 0 10px; }
 
+.inline-menu li:after,
+.inline-menu li:before {
+  content: '\2013';
+  color: #fff;
+  height: 3px;
+  margin: 0 5px;
+  width: 30%; }
+
 .inline-menu li a {
   color: #fffffb;
   font-weight: bold;
-  font-size: 32px;
-  font-size: 2rem;
+  font-size: 24px;
+  font-size: 1.5rem;
   text-decoration: none; }
 
 .mobile-mnu {
@@ -887,7 +897,6 @@ a {
   width: 100%; }
 
 .site-header {
-  border: 1px solid red;
   background: rgba(0, 0, 0, 0.5) no-repeat center;
   background-size: cover;
   width: 90%;
@@ -900,7 +909,6 @@ a {
 
 .main-navigation {
   width: auto;
-  border: 1px solid red;
   align-items: center; }
 
 .site-content .widget-area {
@@ -948,10 +956,19 @@ a {
 .top-header {
   height: 200px;
   width: 100%;
-  border: 1px solid red;
   content: "";
   display: table;
   table-layout: fixed; }
+
+.header-logo,
+.logo {
+  margin: 0 auto;
+  text-align: center;
+  color: #fffffb;
+  object-fit: cover; }
+
+.header-logo {
+  width: 300px; }
 
 .post,
 .page {

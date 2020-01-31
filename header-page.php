@@ -23,8 +23,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'francedance' ); ?></a>
-	<?php if ( is_category() ) : ?>
-   	<header id="masthead" class="site-header">
+	<header id="masthead" class="site-header">
         <div class="header-logo">
             <?php if( mcw_get_option( 'mcw_logo_url' ) ):?>
                 <img src="<?php echo mcw_get_option( 'mcw_logo_url' )?>" alt="<?php bloginfo('name')?>">	               <?php endif; ?>
@@ -45,6 +44,6 @@
 			?>
 		</nav>
 	</header>
-	<?php endif; wp_reset_query(); ?>
+
 	<div id="content" class="site-content">
         <div class="wrapper">

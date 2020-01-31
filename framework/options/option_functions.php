@@ -17,16 +17,16 @@ $options = get_option( 'mcw_options' );
  * Set the animations.
  * ==================
 */
-function makecodework_animate_css() {
-	$options = get_option('mcw_options');
-	$show_animation = $options['mcw_enable_animation'];
-
-	if( !empty($show_animation) ){
-		wp_enqueue_style( 'mcw-animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' );
-		wp_enqueue_script( 'mcw-wowjs', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array( 'jquery' ), '20151215', true );
-	}
-}
-add_action( 'wp_enqueue_scripts', 'makecodework_animate_css' );
+//function makecodework_animate_css() {
+//	$options = get_option('mcw_options');
+//	$show_animation = $options['mcw_enable_animation'];
+//
+//	if( !empty($show_animation) ){
+//		wp_enqueue_style( 'mcw-animatecss', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css' );
+//		wp_enqueue_script( 'mcw-wowjs', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', array( 'jquery' ), '20151215', true );
+//	}
+//}
+//add_action( 'wp_enqueue_scripts', 'makecodework_animate_css' );
 
 /*
  * ==================
@@ -37,7 +37,7 @@ function mcw_custom_styles(){
 	$options = get_option( 'mcw_options' );
 	$mcw_custom_style = '';
 	wp_enqueue_style( 'style', get_template_directory_uri().'style.css' );
-	$mcw_topheader_color = $options['mcwg_topheader_color'];
+	$mcw_topheader_color = $options['mcw_topheader_color'];
 	$mcw_links_color = $options['mcw_links_color'];
 
 	if( !empty( $mcw_topheader_color ) ) {

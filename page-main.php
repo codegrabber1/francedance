@@ -32,8 +32,12 @@ get_header();
             <div class="main_menu clearfix">
                 <nav class="clearfix main-nav">
 	                <div class="py-3 enter-block">
-                        <div class="logo">
-                            <p><?php bloginfo('name')?></p>
+                        <div class="header-logo">
+                            <p>
+                                <?php if( mcw_get_option( 'mcw_logo_url' ) ):?>
+                                    <img src="<?php echo mcw_get_option( 'mcw_logo_url' )?>" alt="<?php bloginfo('name')?>">
+                                <?php endif; ?>
+                            </p>
                         </div>
                         <div class="mobile-mnu d-md-none d-lg-none clearfix">
                             <a class="toggle-mnu d-lg-none" href="#">
