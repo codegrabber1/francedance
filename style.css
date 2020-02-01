@@ -353,7 +353,7 @@ input,
 select,
 optgroup,
 textarea {
-  color: #404040;
+  color: #f1f1f1;
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-size: 1rem;
@@ -929,9 +929,11 @@ a {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  overflow: hidden;
+  padding-bottom: 30px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 50% 50%; }
+  background-position: 100% 100%; }
 
 #mainpage {
   z-index: 1;
@@ -985,6 +987,19 @@ a {
 .page-links {
   clear: both;
   margin: 0 0 1.5em; }
+
+#content-box {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  padding-bottom: 30px; }
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  background-color: transparent; }
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px; }
 
 /*--------------------------------------------------------------
 ## Comments

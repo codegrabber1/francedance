@@ -68,3 +68,7 @@ jQuery(document).ready(function($){
 });// end of ready.
 
 
+window.onload = function () {
+    let box = document.getElementById('content-box');
+    box.style.height = (window.innerHeight - document.getElementById('top').offsetHeight) + "px";
+};
