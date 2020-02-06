@@ -8,7 +8,7 @@
   //border: 1px solid red;
   background: $color__background-opacity no-repeat center;
   background-size: cover;
-  width: 90%;
+  width: 100%;
   margin: 0 auto 20px;
   height: 130px;
   z-index: 2;
@@ -39,6 +39,19 @@
 	width: $size__site-main;
 	margin: 0 auto;
     text-align: center;
+    padding: 30px 0;
 	
+}
+.site-footer ul li {
+  display: inline-block;
+  background-color: $color__active-link;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  padding: 1px;
+}
+.site-info ul li > a {
+  color: $color__inverted-link;
+  @include font-size(1.6);
 }
 

@@ -16,12 +16,6 @@
             return false;
         });
 
-        setTimeout(function () {
-            $(".fade").fadeOut("slow", function () {
-                $(".fade").remove();
-            });
-        }, 2000);
-
         //Top header colorpicker
         $('#mcw_topheader_color_selector').ColorPicker({
             onChange: function (hsb, hex, rgb) {
@@ -37,6 +31,12 @@
                 $('#mcw_links_color').val('#'+hex);
             }
         });
+
+        setTimeout(function () {
+            $(".fade").fadeOut("slow", function () {
+                $(".fade").remove();
+            });
+        }, 2000);
 
     })
 })(jQuery);

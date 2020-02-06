@@ -80,28 +80,29 @@ add_action( 'admin_init', 'mcw_register_settings' );
  * ==================
 */
 function mcw_theme_options_page(){
+	global $post;
 	?>
 	<div id="mcw_admin">
 		<header class="header">
 			<div class="main">
 				<div class="left">
-					<h2><?php echo _e('Theme settings', 'francedance'); ?></h2>
+					<h2><?php bloginfo( 'name' );?></h2>
 				</div>
-				<div class="theme_info">Theme_info</div>
+				<div class="theme_info"><?php echo _e('Theme settings', 'francedance'); ?></div>
 			</div>
 		</header> <!-- /header -->
         <div class="options-wrap">
                <div class="tabs">
                    <ul>
                        <li class="general first"><a href="#general"><i class="icon-cogs"></i><?php echo _e('General', 'francedance'); ?></a></li>
+                       <li class="category"><a href="#category"><?php echo _e( 'Categories', 'francedance' );?></a></li>
                        <li class="contact"><a href="#contact"><i class="icon-cogs"></i><?php echo _e('Contact', 'francedance'); ?></a></li>
-                       <li><a href="#"></a></li>
                        <li class="reset"><a href="#reset"><i class="icon-refresh"></i><?php echo _e( 'Reset', 'francedance' );?></a></li>
                    </ul>
                </div>
             <div class="options_form">
-                <?php if( isset( $_GET['settings-update'] ) ):?>
-                    <div class="update fade">
+                <?php if( isset( $_GET['settings-updated'] ) ):?>
+                    <div class="updated fade">
                         <p>
 			                <?php _e( 'Theme setup has been updated successfully', '' );?>
                         </p>
@@ -164,6 +165,54 @@ function mcw_theme_options_page(){
                                 </div>
                             </div>
                         </div>  <!-- #general -->
+                        <div id="category" class="tab_block">
+                            <h2><?php _e( 'Set categories', 'francedance' );?></h2>
+                            <div class="fields_wrap">
+                                <div class="field">
+                                    <h3><?php _e( 'Choose category for photo gallery', 'francedance' );?></h3>
+                                    <label for="mcw_options[photo_category]"><?php _e( 'Photo Category', 'francedance' )?></label>
+
+                                    <select name="mcw_options[photo_category]" id="mcw_options[photo_category]" class="styled">
+                                        <?php
+                                            $categories = get_categories( array ( 'hide_empty' => 1, 'hierarchical' => 0 ));
+                                        ?>
+                                        <option <?php selected( 0 == $options['photo_category'] )?> value="0">
+                                            <?php _e( 'All categories', 'francedance' );?>
+                                        </option>
+                                        <?php
+                                            if( $categories ):
+                                             foreach( $categories as $cat ) : ?>
+                                                 <option <?php selected( $cat->term_id == $options['photo_category'] )?>
+                                                         value="<?php echo $cat->term_id;?>"><?php echo $cat->cat_name?>
+                                                 </option>
+                                        <?php endforeach; endif;?>
+                                    </select>
+                                    <span class="desc long"><?php _e( "Choose a category for a photo gallery.", 'francedance' ); ?></span>
+                                </div>
+
+                                <div class="field">
+                                    <h3><?php _e( 'Choose category for video gallery', 'francedance' );?></h3>
+                                    <label for="mcw_options[video_category]"><?php _e( 'Video Category', 'francedance' );?></label>
+                                    <select name="mcw_options[video_category]" id="mcw_options[video_category]" class="styled">
+		                                <?php
+		                                    $categories = get_categories( array ( 'hide_empty' => 1 ));
+		                                ?>
+                                        <option <?php selected( 0 == $options['video_category'] )?> value="0">
+			                                <?php _e( 'All categories', 'francedance' );?>
+                                        </option>
+		                                <?php
+		                                if( $categories ):
+			                                foreach( $categories as $cat ) : ?>
+                                                <option <?php selected( $cat->term_id == $options['video_category'] )?>
+                                                        value="<?php echo $cat->term_id;?>"><?php echo $cat->cat_name?>
+                                                </option>
+			                                <?php endforeach; endif;?>
+                                    </select>
+                                    <span class="desc "><?php _e( "Choose a category for a video gallery.", 'francedance' ); ?></span>
+                                </div>
+
+                            </div>
+                        </div>
                         <div id="contact" class="tab_block">
                             <h2><?php _e( 'Contact settings', 'francedance' );?></h2>
                             <div class="fields_wrap">
@@ -207,11 +256,13 @@ function mcw_theme_options_page(){
 */
 function mcw_default_options(){
     $options = array(
-         'mcw_logo_url'     => get_template_directory_uri().'/images/logo.png',
+         'mcw_logo_url'     => get_template_directory_uri().'/css/images/logo.png',
          'mcw_fb_url'       => '',
-         'mcw_inst_url'       => '',
+         'mcw_inst_url'     => '',
          'mcw_youtube_url'  => '',
          'mcw_twitter_url'  => '',
+         'photo_category'   => 0,
+         'video_category'   => 0,
     );
 
     return $options;
@@ -230,7 +281,28 @@ function mcw_validate_options( $input ){
         $input['mcw_inst_url']      = esc_url_raw( $input['mcw_inst_url'] );
         $input['mcw_youtube_url']   = esc_url_raw( $input['mcw_youtube_url'] );
         $input['mcw_twitter_url']   = esc_url_raw( $input['mcw_twitter_url'] );
-    return $input;
+
+	    /**
+	     *  Photo category.
+	     */
+        $categories = get_categories( array( 'hide_empty' => 0, 'hierarchical' => 0 ) );
+        $cat_ids = array();
+        foreach( $categories as $category )
+            $cat_ids[] = $category->term_id;
+        if( !in_array( $input['photo_category'], $cat_ids ) && ( $input['photo_category'] ) !=0 )
+	        $input['photo_category'] = $options['photo_category'];
+
+	    /**
+	     *  Video category.
+	     */
+	    $categories = get_categories( array( 'hide_empty' => 0, 'hierarchical' => 0 ) );
+	    $cat_ids = array();
+	    foreach( $categories as $category )
+		    $cat_ids[] = $category->term_id;
+	    if( !in_array( $input['video_category'], $cat_ids ) && ( $input['video_category'] ) !=0 )
+		    $input['video_category'] = $options['video_category'];
+        
+        return $input;
     elseif( $reset ) :
         $input = mcw_default_options();
         return $input;

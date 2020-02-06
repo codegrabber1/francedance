@@ -1,27 +1,35 @@
 jQuery(document).ready(function($){
-    // $(window).scroll(function(){
-    //     if ($(window).scrollTop() >= 200) {
-    //         $('.site-header').addClass('sticky');
-    //
-    //     }
-    //     else {
-    //         $('.site-header').removeClass('sticky');
-    //
-    //     }
-    // });
+
+    $("#aniimated-thumbnials").lightGallery({
+        thumbnail:true,
+        animateThumb: false,
+        showThumbByDefault: false,
+        selector: 'a'
+    });
     // init Masonry
-    let $grid = $(".grid");
-    $grid.masonry({
+    let $grid = $('.grid').masonry({
         itemSelector: '.grid-item',
         percentPosition: true,
         columnWidth: '.grid-sizer',
         resize: true
     });
-    // layout Masonry after each image loads
+// layout Masonry after each image loads
     $grid.imagesLoaded().progress( function() {
         $grid.masonry();
     });
-    
+    let config = {
+        
+        selectors: {
+            target: '.grid-item'
+        }
+    };
+    // gallery filter activation
+    if($('#image-gallery').length){
+        $('#image-gallery').mixItUp(config);
+    }
+    // gallery filter activation
+    // $('#image-gallery').mixItUp(config);
+
     $(".owl-carousel").owlCarousel({
         items: 1,
         loop: true,
@@ -31,12 +39,47 @@ jQuery(document).ready(function($){
         dots: false
     });
 
-    // top menu
-    $(".sf-menu").superfish();
-    $(".sf-menu").after("<div id='my-menu'>");
-    $(".sf-menu").clone().appendTo("#my-menu");
+    // top menu on pages.
+    // $(".inline-menu").superfish();
+    // $(".inline-menu").after("<div id='page-menu'>");
+    // $(".inline-menu").clone().appendTo("#page-menu");
+    // $("#page-menu").find("*").attr("style", "");
+    // $("#page-menu").find("ul").removeClass("inline-menu");
+    // $("#page-menu").mmenu({
+    //     extensions: ["widescreen", "pagedim-black","effect-menu-slide", "effect-listitems-slide", "fx-menu-zoom", "fx-panels-zoom", "theme-dark"],
+    //     navbar: {
+    //         title: "Battle BAD"
+    //     }
+    // });
+    // let apis = $("#page-menu").data("mmenu");
+    // apis.bind("closed", function(){
+    //     $(".toggle-mnu").removeClass("on");
+    // });
+    //
+    // $(".mobile-mnu").click(function() {
+    //     let mmAPI = $("#page-menu").data("mmenu");
+    //     mmAPI.open();
+    //     let span = $(this).find(".toggle-mnu");
+    //     mmAPI.bind("open:finish", function(){
+    //         span.addClass("on");
+    //     });
+    //
+    //     mmAPI.bind("close:finish", function(){
+    //         span.removeClass("on");
+    //     });
+    //
+    //     $(".main-mnu").slideToggle();
+    //     return false;
+    // }); // top menu on pages.
+
+
+    // sidebar menu
+    $("#primary-menu").superfish();
+    $("#primary-menu").after("<div id='my-menu'>");
+    $("#primary-menu").clone().appendTo("#my-menu");
     $("#my-menu").find("*").attr('style', '');
     $("#my-menu").find("ul").removeClass("sf-menu");
+    $("#my-menu").find("ul").removeClass("inline-menu");
     $("#my-menu").mmenu({
         extensions: ["widescreen", "pagedim-black","effect-menu-slide", "effect-listitems-slide", "fx-menu-zoom", "fx-panels-zoom", "theme-dark"],
         navbar: {
@@ -49,9 +92,9 @@ jQuery(document).ready(function($){
     });
 
     $(".mobile-mnu").click(function() {
-        var mmAPI = $("#my-menu").data("mmenu");
+        let mmAPI = $("#my-menu").data("mmenu");
         mmAPI.open();
-        var thiss = $(this).find(".toggle-mnu");
+        let thiss = $(this).find(".toggle-mnu");
         mmAPI.bind("open:finish", function(){
             thiss.addClass("on");
         });
@@ -62,13 +105,8 @@ jQuery(document).ready(function($){
 
         $(".main-mnu").slideToggle();
         return false;
-    }); // end top menu.
+    }); // end sidebar menu.
 
-
+    
 });// end of ready.
 
-
-window.onload = function () {
-    let box = document.getElementById('content-box');
-    box.style.height = (window.innerHeight - document.getElementById('top').offsetHeight) + "px";
-};

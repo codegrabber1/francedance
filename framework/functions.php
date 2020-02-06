@@ -140,15 +140,19 @@ function francedance_scripts() {
 
 	wp_enqueue_style( 'francedance-mmenucss', 'https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.3/jquery.mmenu.all.css' );
 
+	wp_enqueue_style( 'francedance-lghtcss', get_template_directory_uri() .'/libs/lightgallery/css/lightgallery.css' );
+
 
 	wp_enqueue_style( 'style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'francedance-jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'francedance-mixjs', get_template_directory_uri() .'/js/jquery.mixitup.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'francedance-imagesloaded', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'francedance-masonry', 'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js', array(), '20151215', true );
+
 
 	wp_enqueue_script( 'francedance-carousel', 'https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js', array(), '20151215', true );
 
@@ -158,9 +162,14 @@ function francedance_scripts() {
 
 	wp_enqueue_script( 'francedance-mmenujs', 'https://cdnjs.cloudflare.com/ajax/libs/jQuery.mmenu/7.0.3/jquery.mmenu.all.js', array(), '20151215', true );
 
+	wp_enqueue_script( 'francedance-lgthnjs', get_template_directory_uri() .'/libs/lightgallery/js/lg-thumbnail.min.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'francedance-lghgjs', get_template_directory_uri() .'/libs/lightgallery/js/lightgallery-all.min.js', array(), '20151215', true );
+
 
 
 	wp_enqueue_script( 'francedance-customjs', get_template_directory_uri() . '/js/custom.js', array(), '20151215', true );
+
 
 
 

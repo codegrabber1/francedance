@@ -21,7 +21,6 @@ get_header( 'page' );
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-
 	                        <?php
 	                        while ( have_posts() ) :
 		                        the_post();
@@ -44,5 +43,4 @@ get_header( 'page' );
 	</div><!-- #primary -->
 
 <?php
-//get_sidebar();
 get_footer();

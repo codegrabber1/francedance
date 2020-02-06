@@ -40,6 +40,8 @@
 				'menu_id'        => 'primary-menu',
 				'menu_class'     => 'inline-menu',
 				'container'      => 'ul',
+				'fallback_cb'    => '__return_empty_string',
+				'depth'          => 0
 			) );
 			?>
 		</nav>
