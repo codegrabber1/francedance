@@ -14,7 +14,7 @@ get_header();
 ?>
 <div id="primary" class="content-area">
     <main id="main" class="site-main">
-        <div class="wrrap">
+<!--        <div class="wrrap">-->
             <?php
                 $mainslider = new WP_Query( array ( 'post_type' => 'mainslider' ) );
                 if( $mainslider->have_posts() ):
@@ -22,7 +22,8 @@ get_header();
             <div id="mainpage" class="owl-carousel">
                 <?php
                     while( $mainslider->have_posts() ) : $mainslider->the_post();
-                        get_template_part( 'template-parts/content', 'main' );
+                    the_post_thumbnail( 'full' );
+                    //get_template_part( 'template-parts/content', 'main' );
                     endwhile;
                 ?>
             </div>
@@ -31,7 +32,7 @@ get_header();
             ?>
             <div class="main_menu clearfix">
                 <nav class="clearfix main-nav">
-	                <div class="py-3 enter-block">
+	                <div class="enter-block">
                         <div class="header-logo">
                             <p>
                                 <?php if( mcw_get_option( 'mcw_logo_url' ) ):?>
@@ -57,7 +58,7 @@ get_header();
                     </div>
                 </nav>
             </div>
-        </div>
+<!--        </div>-->
     </main><!-- #main -->
 </div><!-- #primary -->
 <?php

@@ -29,20 +29,20 @@
                 <img src="<?php echo mcw_get_option( 'mcw_logo_url' )?>" alt="<?php bloginfo('name')?>">	               <?php endif; ?>
         </div>
 		<nav id="site-navigation" class="main-navigation">
-            <div class="mobile-mnu d-md-none d-lg-none clearfix">
+            <div class="mobile-mnu d-lg-none clearfix">
                 <a class="toggle-mnu d-lg-none" href="#">
                     <span></span>
                 </a>
             </div>
 			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-				'menu_class'     => 'inline-menu',
-				'container'      => 'ul',
-				'fallback_cb'    => '__return_empty_string',
-				'depth'          => 0
-			) );
+                wp_nav_menu( array(
+                    'theme_location' => 'menu-1',
+                    'menu_id'        => 'primary-menu',
+                    'menu_class'     => 'inline-menu',
+                    'container'      => 'ul',
+                    'fallback_cb'    => '__return_empty_string',
+                    'depth'          => 0
+                ) );
 			?>
 		</nav>
 	</header>

@@ -6,7 +6,6 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: 25%;
   display: flex;
   align-items: center;
 }
@@ -203,65 +202,40 @@
   width: 45px;
   height: 33px;
   float: left;
-  padding: 6px 8px;
-}
+  padding: 6px 8px; }
 .toggle-mnu span:after,
 .toggle-mnu span:before {
   content: "";
   position: absolute;
   left: 0;
-  top: 9px;
-}
+  top: 9px; }
 .toggle-mnu span:after {
-  top: 18px;
-}
+  top: 18px; }
 .toggle-mnu span {
   position: relative;
-  display: block;
-}
-.toggle-mnu span,
-.toggle-mnu span:after,
-.toggle-mnu span:before {
+  display: block; }
+.toggle-mnu span, .toggle-mnu span:after, .toggle-mnu span:before {
   width: 100%;
   height: 3px;
-  background-color: $color__active-link;
+  background-color: #f60;
   transition: all 0.3s;
   backface-visibility: hidden;
-  border-radius: 2px;
-}
+  border-radius: 2px; }
 .toggle-mnu.on span {
-  background-color: $color__background-transparent
-}
+  background-color: transparent; }
 .toggle-mnu.on span:before {
   -webkit-transform: rotate(45deg) translate(-1px, 0px);
   -moz-transform: rotate(45deg) translate(-1px, 0px);
   -ms-transform: rotate(45deg) translate(-1px, 0px);
   -o-transform: rotate(45deg) translate(-1px, 0px);
-  transform: rotate(45deg) translate(-1px, 0px);
-}
+  transform: rotate(45deg) translate(-1px, 0px); }
 .toggle-mnu.on span:after {
   -webkit-transform: rotate(-45deg) translate(6px, -7px);
   -moz-transform: rotate(-45deg) translate(6px, -7px);
   -ms-transform: rotate(-45deg) translate(6px, -7px);
   -o-transform: rotate(-45deg) translate(6px, -7px);
-  transform: rotate(-45deg) translate(6px, -7px);
+  transform: rotate(-45deg) translate(6px, -7px); }
+.current-menu-item a {
+  color:  $color__active-link !important;
 }
-.current-menu-item {
-  color:  $color__active-link;
-}
-@media only screen and (max-width: 992px) {
-  .sf-menu,
-  .inline-menu {
-    display: none !important
-  }
-  .site-header {
-    //align-items: flex-start  !important;
-    flex-direction: row-reverse;
-  }
 
-}
-@media only screen and (min-width: 992px){
-  .toggle-mnu {
-    display: none !important;
-  }
-}

@@ -75,75 +75,43 @@ if( isset( $_POST['mcw_submit'] )) {
 	}
 	
 }
-get_header();
+get_header('page');
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
             <div class="wrrap" style='background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)),url("<?php echo get_the_post_thumbnail_url(); ?>")'>
                 <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="contact-info">
-                                <h2>
-                                    <span>Contact</span>
-                                </h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <section class="contact-block">
-                                <h2>Questions</h2>
-                                <p>contact@battle-pro.com</p>
-                                <p><button type="submit" name="mcw_submit" > <?php _e('Formulaire Presse', 'francedance'); ?> </button></p>
-                                <h2>Restez connectés</h2>
-                                <p>Retrouvez nous sur les réseaux sociaux</p>
-                                <ul>
-                                    <?php if( mcw_get_option( 'mcw_twitter_url' ) ): ?>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if( mcw_get_option( 'mcw_fb_url' ) ): ?>
-                                    <li><a href="<?php echo mcw_get_option( 'mcw_fb_url' ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                    <?php endif; ?>
-                                    <?php if( mcw_get_option( 'mcw_inst_url' ) ):?>
-                                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    <?php endif;?>
-                                    <?php if( mcw_get_option( 'mcw_youtube_url' ) ): ?>
-                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                                    <?php endif;?>
-                                </ul>
-                                
-                            </section>
-                        </div>
-                        <div class="col-md-6">
-                            <section class="contact-block" >
+                    <div id="contact-box">
+                        <section class="contact-block">
+                            <div class="row">
+                                <div class="col-md-8 contact-form">
                                 <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" id="mcw_contact_form">
-
-                                    <div class="">
+                                    <div class="row">
+                                    <div class="col-md-6">
                                         <input type="text" class="name_field requiredField" id="sender_name" name ="sender_name" value="<?php if(isset($_POST['sender_name'])) echo $_POST['sender_name'];?>" placeholder="<?php _e('Your Name')?>">
-				                        <?php if( $name_error != '' ) : ?>
+                                        <?php if( $name_error != '' ) : ?>
                                             <span class="error"><?php echo $name_error;?></span>
-				                        <?php endif;?>
+                                        <?php endif;?>
                                     </div>
-                                    <div class="">
+                                    <div class="col-md-6">
                                         <input type="email" class="email requiredField" id="sender_email " name="sender_email" placeholder="<?php _e('Your Email')?> &#42;" value="<?php if(isset($_POST['sender_email'])) echo $_POST['sender_email'];?>">
-				                        <?php if( $email_error != '' ) : ?>
+                                        <?php if( $email_error != '' ) : ?>
                                             <span class="error"><?php echo $email_error;?></span>
-				                        <?php endif;?>
+                                        <?php endif;?>
                                     </div>
-                                    <div class="">
+                                    <div class="col-12">
                                         <textarea name="message_text" class="message_field requiredField" id="message_text" rows="8" cols="10" placeholder="<?php _e('Your Text')?>"><?php if(isset($_POST['message_text'])) { if(function_exists('stripslashes')) { echo stripslashes($_POST['message_text']); } else { echo $_POST['message_text']; } } ?></textarea>
-				                        <?php if( $message_error != '' ) : ?>
+                                        <?php if( $message_error != '' ) : ?>
                                             <span class="error"><?php echo $message_error;?></span>
-				                        <?php endif;?>
+                                        <?php endif;?>
                                     </div>
                                     <div id="recaptcha_widget" class='captcha_field' style="display:none">
                                         <div class="field">
                                             <div class="recaptcha_only_if_incorrect_sol" style="color:red"><?php _e('Error! Please, try again!', 'francedance'); ?></div>
                                             <input type="text" id="recaptcha_response_field" class="text requiredField captcha_field" name="recaptcha_response_field"placeholder="<?php _e('Confirmation code', 'francedance'); ?> &#42;" />
-					                        <?php if($captcha_error != '') { ?>
+                                            <?php if($captcha_error != '') { ?>
                                                 <span class="error"><?php echo $captcha_error; ?></span>
-					                        <?php } ?>
+                                            <?php } ?>
                                         </div>
 
                                         <div class="field recaptcha-image">
@@ -168,19 +136,41 @@ get_header();
                                         <div class="g-recaptcha">6LedRCQUAAAAANzorD4GKu4NMBfWMXj69orELAjB</div>
                                         <span class="error"><?php echo $captcha_error;?></span>
                                     </div>
-                                    <div class="">
-                                        <input type="submit" name="mcw_submit" value="<?php _e('Envoyer', 'francedance'); ?>">
+                                    <div class="col-12">
+                                        <input type="submit" class="right" name="mcw_submit" value="<?php _e('Envoyer', 'francedance'); ?>">
+                                    </div>
                                     </div>
                                     <script src='https://www.google.com/recaptcha/api.js'></script>
                                 </form>
-                            </section>
-                        </div>
+                            </div>
+                                <div class="col-md-4 contact-info">
+                                    <h2>Questions</h2>
+                                    <p>contact@battle-pro.com</p>
+                                    <p><button type="submit" name="mcw_submit" > <?php _e('Formulaire Presse', 'francedance'); ?> </button></p>
+                                    <h2>Restez connectés</h2>
+                                    <p>Retrouvez nous sur les réseaux sociaux</p>
+                                    <ul>
+			                            <?php if( mcw_get_option( 'mcw_twitter_url' ) ): ?>
+                                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			                            <?php endif; ?>
+			                            <?php if( mcw_get_option( 'mcw_fb_url' ) ): ?>
+                                            <li><a href="<?php echo mcw_get_option( 'mcw_fb_url' ); ?>"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			                            <?php endif; ?>
+			                            <?php if( mcw_get_option( 'mcw_inst_url' ) ):?>
+                                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+			                            <?php endif;?>
+			                            <?php if( mcw_get_option( 'mcw_youtube_url' ) ): ?>
+                                            <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+			                            <?php endif;?>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
-
             </div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
 <?php
-get_footer('home');
+    get_footer();

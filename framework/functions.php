@@ -149,7 +149,6 @@ function francedance_scripts() {
 
 	wp_enqueue_script( 'francedance-mixjs', get_template_directory_uri() .'/js/jquery.mixitup.min.js', array(), '20151215', true );
 
-	wp_enqueue_script( 'francedance-imagesloaded', 'https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'francedance-masonry', 'https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js', array(), '20151215', true );
 

@@ -7,17 +7,17 @@
 ?>
     <div class="gallery-filter" >
         <ul>
-            <li class="filter" data-filter=".photo">
+            <li class="filter" data-rel=".photo" data-filter=".photo">
                 <span>Photo</span>
             </li>
             <li class="filter active" data-filter="all"><span>All</span></li>
-            <li class="filter" data-filter=".video">
+            <li class="filter" data-rel=".video" data-filter=".video">
                 <span>Video</span>
             </li>
         </ul>
     </div>
 
-<div id="aniimated-thumbnials" class='grid'>
+<div id="aniimated-thumbnials">
 
     <div id="image-gallery" class="grid">
 

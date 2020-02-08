@@ -7,7 +7,6 @@
 }
 .header-logo,
 .logo {
-  margin: 0 auto;
   text-align: center;
   color: $color__inverted-link;
   object-fit: cover;
@@ -37,7 +36,7 @@
   width: 100%;
   height: 100vh;
   overflow-y: auto;
-  padding-bottom: 30px;
+  //padding-bottom: 30px;
 
 }
 /* Scrollbar styles */

@@ -221,6 +221,7 @@ function mcw_theme_options_page(){
 		                            <?php _e( 'reCAPTCHA helps to avoid spam by email. Using CAPTCHA confirms that sending a message is done by a person.', 'francedance' );?>
                                 </div>
                                 <h3><?php _e( 'Contact Card', 'francedance' );?></h3>
+                                textarea here
                                 
                             </div>
                         </div>  <!-- #contact -->
