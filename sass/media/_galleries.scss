@@ -56,7 +56,7 @@
   opacity: 0;
 }
 .gallery-filter ul li.active span, .gallery-filter ul li:hover span {
-  color: #fff; }
+  color: $color__active-link; }
 .gallery-filter ul li.active span:after, .gallery-filter ul li:hover span:after {
   opacity: 1; }
 #image-gallery .mix {

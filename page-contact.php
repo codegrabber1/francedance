@@ -19,17 +19,17 @@ $captcha_error  = '';
 if( isset( $_POST['mcw_submit'] )) {
 	/* validate sender name*/
 	if(trim($_POST['sender_name']) === '') {
-		$name_error = "Будь ласка, введіть Ваше ім'я.";
+		$name_error = "Please, enter your name.";
 		$has_error = true;
 	} else {
 		$sender_name = trim($_POST['sender_name']);
 	}
 	/*validate sender email*/
 	if(trim($_POST['sender_email']) === '')  {
-		$email_error = 'Будь ласка, введіть Ваш email.';
+		$email_error = 'Please enter your email.';
 		$has_error = true;
 	} else if (!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/", trim($_POST['sender_email']))){
-		$email_error = 'Будь ласка, введіть Ваше коректний email.';
+		$email_error = 'Please, enter your correct email.';
 		$has_error = true;
 	} else {
 		$sender_email = trim($_POST['sender_email']);
@@ -37,7 +37,7 @@ if( isset( $_POST['mcw_submit'] )) {
 
 	/*validate message*/
 	if(trim($_POST['message_text']) === '') {
-		$message_error = 'Будь ласка, введіть повідомлення.';
+		$message_error = 'Please, enter a message.';
 		$has_error = true;
 	} else {
 		if(function_exists('stripslashes')) {
@@ -47,7 +47,7 @@ if( isset( $_POST['mcw_submit'] )) {
 		}
 	}
 
-	// include_once( trailingslashit( get_stylesheet_directory() ) . 'framework/lib/recaptcha/recaptchalib.php' );
+
 	if( !isset( $has_error ) ) {
 		$email_to = mcw_get_option( 'mcw_contact_email' );
 		$subject = mcw_get_option( 'mcw_contact_subject' );
@@ -77,6 +77,56 @@ if( isset( $_POST['mcw_submit'] )) {
 }
 get_header('page');
 ?>
+    <script type="text/javascript">
+        <!--//--><![CDATA[//><!--
+        jQuery(document).ready(function() {
+            jQuery('form#wt_contact_form').submit(function() {
+                jQuery('form#wt_contact_form .error').remove();
+                var hasError = false;
+                jQuery('.requiredField').each(function() {
+                    if(jQuery.trim(jQuery(this).val()) == '') {
+
+                        if(jQuery(this).hasClass('name_field')) {
+                            jQuery(this).parent().append('<span class="error"><?php _e('Please enter your name.', 'wellthemes'); ?></span>');
+                        }
+
+                        if(jQuery(this).hasClass('title_field')) {
+                            jQuery(this).parent().append('<span class="error"><?php _e('Please enter message title.', 'wellthemes'); ?></span>');
+                        }
+
+                        if(jQuery(this).hasClass('email')) {
+                            jQuery(this).parent().append('<span class="error"><?php _e('Please enter your email.', 'wellthemes'); ?></span>');
+                        }
+
+                        if(jQuery(this).hasClass('message_field')) {
+                            jQuery(this).parent().append('<span class="error"><?php _e('Please enter your message.', 'wellthemes'); ?></span>');
+                        }
+
+                        if(jQuery(this).hasClass("captcha_field")) {
+                            jQuery(this).parent().append('<span class="error"><?php _e('Please enter the security code.', 'wellthemes'); ?></span>');
+                        }
+
+                        jQuery(this).addClass('inputError');
+                        hasError = true;
+                    } else if(jQuery(this).hasClass('email')) {
+                        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+                        if(!emailReg.test(jQuery.trim(jQuery(this).val()))) {
+                            jQuery(this).parent().append('<span class="error"><?php _e('Please enter valid email', 'wellthemes'); ?> </span>');
+                            jQuery(this).addClass('inputError');
+                            hasError = true;
+                        }
+                    }
+                });
+
+                if(hasError) {
+                    return false;
+                } else{
+                    return true;
+                }
+            });
+        });
+        //-->!]]>
+    </script>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
             <div class="wrrap" style='background-image: linear-gradient(rgba(0,0,0,.8), rgba(0,0,0,.8)),url("<?php echo get_the_post_thumbnail_url(); ?>")'>
@@ -105,48 +155,20 @@ get_header('page');
                                             <span class="error"><?php echo $message_error;?></span>
                                         <?php endif;?>
                                     </div>
-                                    <div id="recaptcha_widget" class='captcha_field' style="display:none">
-                                        <div class="field">
-                                            <div class="recaptcha_only_if_incorrect_sol" style="color:red"><?php _e('Error! Please, try again!', 'francedance'); ?></div>
-                                            <input type="text" id="recaptcha_response_field" class="text requiredField captcha_field" name="recaptcha_response_field"placeholder="<?php _e('Confirmation code', 'francedance'); ?> &#42;" />
-                                            <?php if($captcha_error != '') { ?>
-                                                <span class="error"><?php echo $captcha_error; ?></span>
-                                            <?php } ?>
-                                        </div>
 
-                                        <div class="field recaptcha-image">
-                                            <div id="recaptcha_image"></div>
-                                            <div class="recaptcha_refresh"><i class="fa fa-refresh"></i><a href="javascript:Recaptcha.reload()"><?php _e('reload', 'francedance'); ?></a></div>
-                                            <div class="recaptcha_only_if_image"><i class="fa fa-volume-up"></i><a href="javascript:Recaptcha.switch_type('image')"><?php _e('image ', 'francedance'); ?></a></div>
-                                            <div class="recaptcha_only_if_audio"><i class="fa fa-picture-o"></i><a href="javascript:Recaptcha.switch_type('audio')"><?php _e('audio', 'francedance'); ?></a></div>
-                                            <div class="recaptcha_help"><i class="fa fa-info-circle"></i><a href="javascript:Recaptcha.showhelp()"><?php _e('help', 'francedance'); ?></a></div>
-                                        </div>
-
-                                        <script type="text/javascript"
-                                                src="http://www.google.com/recaptcha/api/challenge?k=<?php echo $mcw_recaptcha_public_key; ?>">
-                                        </script>
-                                        <noscript>
-                                            <iframe src="http://www.google.com/recaptcha/api/noscript?k=<?php echo $mcw_recaptcha_public_key; ?>"
-                                                    height="300" width="500" frameborder="0"></iframe><br>
-                                            <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-    </textarea>
-                                            <input type="hidden" name="recaptcha_response_field"
-                                                   value="manual_challenge">
-                                        </noscript>
-                                        <div class="g-recaptcha">6LedRCQUAAAAANzorD4GKu4NMBfWMXj69orELAjB</div>
-                                        <span class="error"><?php echo $captcha_error;?></span>
-                                    </div>
                                     <div class="col-12">
                                         <input type="submit" class="right" name="mcw_submit" value="<?php _e('Envoyer', 'francedance'); ?>">
                                     </div>
                                     </div>
-                                    <script src='https://www.google.com/recaptcha/api.js'></script>
+
                                 </form>
                             </div>
                                 <div class="col-md-4 contact-info">
                                     <h2>Questions</h2>
-                                    <p>contact@battle-pro.com</p>
-                                    <p><button type="submit" name="mcw_submit" > <?php _e('Formulaire Presse', 'francedance'); ?> </button></p>
+                                     <?php if( mcw_get_option( 'contact_email' ) ):?>
+                                    <p><?php echo mcw_get_option( 'contact_email' )?></p>
+                                    <?php endif;?>
+<!--                                    <p><button type="submit" name="mcw_submit" > --><?php //_e('Formulaire Presse', 'francedance'); ?><!-- </button></p>-->
                                     <h2>Restez connectés</h2>
                                     <p>Retrouvez nous sur les réseaux sociaux</p>
                                     <ul>

@@ -40,7 +40,7 @@ get_header();
                                 <?php endif; ?>
                             </p>
                         </div>
-                        <div class="mobile-mnu d-md-none d-lg-none clearfix">
+                        <div class="mobile-mnu d-lg-none clearfix">
                             <a class="toggle-mnu d-lg-none" href="#">
                                 <span></span>
                             </a>
