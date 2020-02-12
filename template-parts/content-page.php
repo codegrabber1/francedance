@@ -10,6 +10,7 @@
 ?>
 
 <article id="content-box" class="content-box">
+    
 <div class="entry-content">
 		<?php
 		the_content();

@@ -41,5 +41,24 @@ img {
 figure {
 	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
 }
+/**
+  Button for pick up to the top.
+ */
+#toTop {
+	width: 40px;
+	height: 40px;
+	border: 1px solid #ccc;
+	text-align: center;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 10px;
+	right: 50%;
+	cursor: pointer;
+	display: none;
+	color: #fff;
+	background-color: $color__active-link;
+	font-size: 25px;
+	z-index: 10;
+}
 
 @import "tables";

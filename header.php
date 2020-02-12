@@ -21,6 +21,7 @@
 </head>
 
 <body <?php body_class(); ?>>
+<div id="toTop" style="display: none;"><i class="fa fa-angle-up" aria-hidden="true"></i></div>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'francedance' ); ?></a>
 	<?php if ( is_category() ) : ?>

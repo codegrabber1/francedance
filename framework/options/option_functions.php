@@ -102,7 +102,7 @@ function mcw_custom_styles(){
 	$mcw_links_color = $options['mcw_links_color'];
 
 	if( !empty( $mcw_links_color ) ) {
-		$mcw_custom_style .= "a,.entry-title a {\n color: $mcw_links_color;\n}\n\n";
+		$mcw_custom_style .= "a,.entry-title a, .inline-menu li a, .sf-menu li > a, .site-info a {\n color: $mcw_links_color;\n}\n\n";
 		$mcw_custom_style .= ".gallery-filter ul li.active span, .gallery-filter ul li:hover span {\n color: $mcw_links_color;\n}\n\n";
 		
 	}
